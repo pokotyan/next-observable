@@ -11,7 +11,6 @@ export const fetchPokemon = (action$) =>
   action$.pipe(
     ofType(pokemonActions.FETCH_POKEMON),
     debounceTime(500),
-    tap(action => console.log(action)),
     mergeMap(action => client.query({
       variables: {
         name: action.payload.name,
@@ -49,7 +48,6 @@ export const fetchPokemon = (action$) =>
         }
       `
     })),
-    tap(response => console.log(response)),
     map(response => pokemonActions.fetchPokemonFulfilled(response))
   );
 
@@ -57,7 +55,6 @@ export const fetchPokemons = (action$) =>
   action$.pipe(
     ofType(pokemonActions.FETCH_POKEMONS),
     debounceTime(500),
-    tap(action => console.log(action)),
     mergeMap(action => client.query({
       variables: {
         first: action.payload.first,
@@ -95,19 +92,27 @@ export const fetchPokemons = (action$) =>
         }
       `
     })),
-    tap(response => console.log(response)),
     map(response => {
       return response.data.pokemons.map(pokemon => {
         let jname;
+        let base = {};
 
         pokemonConfigList.some(pokemonConfig => {
           if (pokemonConfig.ename === pokemon.name) {
             jname = pokemonConfig.jname;
+            base.hp = pokemonConfig.base.HP;
+            base.atk = pokemonConfig.base.Attack;
+            base.def = pokemonConfig.base.Defense;
+            base.spAtk = pokemonConfig.base['Sp.Atk'];
+            base.spDef = pokemonConfig.base['Sp.Def'];
+            base.speed = pokemonConfig.base.Speed;
+
             return true;
           }
         })
 
         pokemon.jname = jname || '';
+        pokemon.base = base;
 
         return pokemon;
       })

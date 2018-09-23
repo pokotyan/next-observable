@@ -6,6 +6,7 @@ import shortid from 'shortid';
 import _ from 'lodash';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Tooltip from '@material-ui/core/Tooltip';
 import * as pokemonActions from "./actions/pokemon";
 import style from "./style.css";
 
@@ -57,17 +58,35 @@ class App extends Component {
           }
         </div>
         <div className={style.container}>
-          {suggestions.map(pokemon => (
-            <div
-              className={style.row}
-              key={shortid.generate()}
-            >
-              <span className={style.name}>{`${pokemon.jname}:${pokemon.name}`}</span>
-              <div className={style.imgBox}>
-                <img src={pokemon.gif} />
-              </div>
-            </div>
-          ))}
+          {suggestions.map(pokemon => {
+            const skills = pokemon.attacks && pokemon.attacks.special.map(special => special.name).join(',');
+            const evolutions = pokemon.evolutions && pokemon.evolutions.map(evolution => evolution.name).join(',')
+
+            return (
+              <Tooltip
+                title={
+                  <div>
+                    <div>わざ:{skills}</div>
+                    <div>進化:{evolutions}</div>
+                    <div>HP:{pokemon.base.hp}</div>
+                    <div>攻撃:{pokemon.base.atk}</div>
+                    <div>防御:{pokemon.base.def}</div>
+                    <div>特攻:{pokemon.base.spAtk}</div>
+                    <div>特防:{pokemon.base.spDef}</div>
+                    <div>素早さ:{pokemon.base.speed}</div>
+                  </div>
+                }
+                key={shortid.generate()}
+              >
+                <div className={style.row}>
+                  <span className={style.name}>{`${pokemon.jname}:${pokemon.name}`}</span>
+                  <div className={style.imgBox}>
+                    <img src={pokemon.gif} />
+                  </div>
+                </div>
+              </Tooltip>
+            )            
+          })}
         </div>
       </div>
     )
