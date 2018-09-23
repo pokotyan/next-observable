@@ -3,6 +3,11 @@
   padding: 20px;
 }
 
+input[type=text] {
+  font-size: 16px;
+  transform: scale(0.8);
+}
+
 .container {
   max-width: 100vw;
   display: flex;
