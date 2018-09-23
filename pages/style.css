@@ -36,6 +36,9 @@
 .name {
   display: block;
   align-items: center;
+  font-size: 10px;
+  flood-color: never;
+  font-family: 'pokemon-font', monospace;
 }
 
 .imgBox {

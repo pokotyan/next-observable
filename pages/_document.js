@@ -11,6 +11,14 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
+          <style jsx global>{`
+            @font-face {
+              font-family: 'pokemon-font';
+              src: 
+                url('static/fonts/pokemon-font.woff2') format('woff2'),
+                url('static/fonts/pokemon-font.woff') format('woff');
+            }
+          `}</style>
         </Head>
         <body>
           <Main />

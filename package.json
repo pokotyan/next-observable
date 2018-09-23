@@ -25,6 +25,7 @@
     "next": "^7.0.0",
     "next-redux-wrapper": "^2.0.0",
     "node-fetch": "^2.2.0",
+    "pokemon-font": "^1.8.1",
     "react": "^16.5.2",
     "react-apollo": "^2.1.11",
     "react-dom": "^16.5.2",
