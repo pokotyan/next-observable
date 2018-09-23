@@ -1,0 +1,46 @@
+.search {
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .container {
+    display: block;
+  }
+}
+
+.row {
+  width: 25%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .row {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    width: 100%;
+  }
+}
+
+.name {
+  display: block;
+  align-items: center;
+}
+
+.imgBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
