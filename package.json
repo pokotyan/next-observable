@@ -23,6 +23,7 @@
     "graphql-tag": "^2.9.2",
     "lodash": "^4.17.11",
     "next": "^7.0.0",
+    "next-fonts": "^0.10.0",
     "next-redux-wrapper": "^2.0.0",
     "node-fetch": "^2.2.0",
     "pokemon-font": "^1.8.1",

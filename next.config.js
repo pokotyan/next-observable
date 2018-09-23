@@ -1,6 +1,7 @@
 const withCSS = require('@zeit/next-css');
+const withFonts = require('next-fonts')
 
-module.exports = withCSS({
+module.exports = withFonts(withCSS({
   cssModules: true,
   exportPathMap: function(defaultPathMap) {
     return {
@@ -8,4 +9,4 @@ module.exports = withCSS({
       '/github': { page: '/github' },
     }
   }
-})
+}))
